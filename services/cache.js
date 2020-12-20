@@ -17,8 +17,6 @@ mongoose.Query.prototype.exec = async function () {
 	if (!this.useCache) {
 		return exec.apply(this, arguments);
 	}
-	// client.del(this.hashKey)
-	console.log('with cache', this.hashKey);
 	const key = JSON.stringify(
 		Object.assign({}, this.getQuery(), {
 			collection: this.mongooseCollection.name
@@ -40,7 +38,6 @@ mongoose.Query.prototype.exec = async function () {
 
 module.exports = {
 	clearHash(hashKey) {
-		console.log(hashKey);
 		client.del(JSON.stringify(hashKey))
 	}
 }
