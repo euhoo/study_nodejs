@@ -1,2 +1,4 @@
-/.idea
-/node_modules
+node_modules
+nohup.out
+.DS_Store
+.idea
