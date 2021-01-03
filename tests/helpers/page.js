@@ -20,7 +20,7 @@ class CustomPage {
 
 		await this.setCookie({name: 'session', value: session})
 		await this.setCookie({name: 'session.sig', value: sig});
-		await this.reload()
+		await this.gotoBlogs()
 		await this.waitFor('a[href="/auth/logout"]')
 	}
 	async getContentsOf(selector) {
@@ -28,6 +28,14 @@ class CustomPage {
 	}
 	async gotoBase() {
 		return this.goto('localhost:3000')
+	}
+	async gotoHome() {
+		return this.goto('localhost:3000/home')
+
+	}
+	async gotoBlogs() {
+		return this.goto('localhost:3000/blogs')
+
 	}
 }
 
