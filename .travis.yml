@@ -3,14 +3,14 @@ language: node_js
 #версия ноды
 node_js:
   - "8"
-  -
+
 #виртуальная машина у travis
 dist: trusty
 
 #сервисы, которые travis будет использовать
 services:
   - mongodb
-  - redis
+  - redis-server
 #какие переменные окружения исп
 env:
   - NODE_ENV=ci
