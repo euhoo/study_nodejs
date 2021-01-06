@@ -10,9 +10,12 @@ module.exports = (user) => {
 			user: user._id.toString()
 		}
 	};
+	console.log('sessionObject:',sessionObject);
 	const session = Buffer
 		.from(JSON.stringify(sessionObject))
 		.toString('base64');
+	console.log('session:', session);
 	const sig = keygrip.sign('session=' + session);
+	console.log('sig:', sig);
 	return {session, sig}
 }
