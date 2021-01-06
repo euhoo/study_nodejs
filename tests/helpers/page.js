@@ -4,7 +4,10 @@ const userFactory = require('../factories/userFactory');
 
 class CustomPage {
 	static async build() {
-		const browser = await puppeteer.launch(({headless: false}))
+		const browser = await puppeteer.launch(({
+			headless: true,//true для travis, обычно false
+			args:['--no-sandbox']//для travis
+		}))
 		const page = await browser.newPage()
 		const customPage = new CustomPage(page)
 		return new Proxy(customPage, {
@@ -31,16 +34,11 @@ class CustomPage {
 	}
 
 	async gotoBase() {
-		return this.goto('localhost:3000')
-	}
-
-	async gotoHome() {
-		return this.goto('localhost:3000/home')
-
+		return this.goto('http://localhost:3000')
 	}
 
 	async gotoBlogs() {
-		return this.goto('localhost:3000/blogs')
+		return this.goto('http://localhost:3000/blogs')
 
 	}
 
