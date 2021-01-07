@@ -10,7 +10,7 @@ dist: trusty
 #сервисы, которые travis будет использовать
 services:
   - mongodb
-  - redis-server
+  - redis
 #какие переменные окружения исп
 env:
   - NODE_ENV=ci
