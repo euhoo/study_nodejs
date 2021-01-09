@@ -1,5 +1,6 @@
 const credentials = require('../credentials')
-const {db} = credentials;
+const {db, aws} = credentials;
+const {secretAccessKey, accessKeyId, bucket} = aws;
 const {userName, password, dbName} = db;
 module.exports = {
 	googleClientID:
@@ -8,4 +9,7 @@ module.exports = {
 	mongoURI: `mongodb://${userName}:${password}@cluster0-shard-00-00.lcxzk.mongodb.net:27017,cluster0-shard-00-01.lcxzk.mongodb.net:27017,cluster0-shard-00-02.lcxzk.mongodb.net:27017/${dbName}?ssl=true&replicaSet=atlas-lv3v5w-shard-0&authSource=admin&retryWrites=true&w=majority`,
 	cookieKey: '123123123',
 	redisUrl: 'redis://127.0.0.1:6379',
+	accessKeyId,
+	secretAccessKey,
+	bucket
 };
